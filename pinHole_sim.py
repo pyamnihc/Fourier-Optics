@@ -92,12 +92,13 @@ print(f'total render time: {np.sum(screen_render_times):0.3f}s')
 
 # plot field
 fig, ax = plt.subplots()
-title_str = '\'i\' source simulation'
-fig.suptitle(title_str)
+suptitle_str = '\'i\' source simulation'
+fig.suptitle(suptitle_str)
 ax.imshow(20*np.log10(s_amp), 
             cmap='hot', interpolation='none')
 
-ax.set_title(f'λ={wvl:.2e}m, slit width={slit_scale}λ, slit samples={slit_N}')
+title_str = f'λ={wvl:.2e}m, slit width={slit_scale}λ, slit samples={slit_N}'
+ax.set_title(title_str)
 ax.set_xlabel("distance (m)")
 ax.set_ylabel("source co-ordinates (m)")
 x_tick_inc = depth_N//8 if not (depth_N//8 == 0) else depth_N
@@ -115,7 +116,7 @@ plt.close()
 fig, ax = plt.subplots()
 fig.suptitle(title_str)
 ax.plot(20*np.log10(s_amp[:,-1]))
-ax.set_title(f'λ={wvl:.2e}, slit width={slit_scale}λ')
+ax.set_title(title_str)
 ax.set_xlabel("source co-ordinates (m)")
 ax.set_ylabel("intensity (log scale)")
 ax.set_xticks(range(screen_N)[::y_tic_inc], [f'{screen_l*(i/screen_N-1/2)}' for i in range(screen_N)][::y_tic_inc])
